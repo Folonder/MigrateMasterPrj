@@ -28,10 +28,6 @@ CompanyModel.init({
     country: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    create_date: {
-        type: DataTypes.DATE,
-        allowNull: false
     }
 }, {
   sequelize,

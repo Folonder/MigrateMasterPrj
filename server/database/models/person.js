@@ -37,10 +37,10 @@ PersonModel.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    create_date: {
-        type: DataTypes.DATE,
-        allowNull: false
-    }
+    // create_date: {
+    //     type: DataTypes.DATE,
+    //     allowNull: false
+    // }
 }, {
   sequelize,
   modelName: 'Person'

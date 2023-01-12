@@ -6,6 +6,7 @@ const CompanyModel = require('./database/models/company')
 const PersonModel = require('./database/models/person')
 const personRoutes = require('./routes/personRoutes.js')
 const companyRoutes = require('./routes/companyRoutes.js')
+const port  = process.env.PORT || 3000
 
 
 function start(){
@@ -27,8 +28,8 @@ function startApp(){
     app.get('/', function(req, res){
         res.send('Hello world')
     })
-    app.listen(3000, function(){
-        console.log('Server started at http://localhost:3000')
+    app.listen(port, function(){
+        console.log(`Server started at ${port}`)
     })
 }
 

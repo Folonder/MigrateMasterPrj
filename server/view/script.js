@@ -21,7 +21,7 @@ document.getElementById('benefits-link').addEventListener('click', function(ev){
  })
 
 document.getElementById('feedback-link').addEventListener('click', function(ev){   
-    linkHandler(ev, '.crew-info')
+    linkHandler(ev, '.constact-us')
     document.querySelector('.header-burger').classList.toggle('active')
 })
 
@@ -68,7 +68,7 @@ function linkHandler(ev, name){
 }
 let head = document.querySelector('.js-header');
 let headH = document.querySelector('.js-header').clientHeight;
-
+let arrow = document.querySelector('.arrow');
 
 
 document.onscroll = function(){
@@ -76,17 +76,27 @@ document.onscroll = function(){
         let scroll = window.scrollY;    
         if (scroll > headH && window.innerWidth > 1240){
            head.classList.add('fixed');
-           document.body.style.paddingTop = headH + 'px';
+           document.body.style.paddingTop = headH + 'px';           
         }
         else{
            head.classList.remove('fixed');
-           document.body.removeAttribute('style');
+           document.body.removeAttribute('style');           
         }
     }
     else{        
         head.classList.remove('fixed');
-        document.body.removeAttribute('style');
+        document.body.removeAttribute('style');        
     }
+    
+    // for apper/disapper arrow
+    let scroll = window.scrollY;    
+    if (scroll > headH){           
+       arrow.style.display = 'none';
+    }
+    else{           
+       arrow.style.display = 'block';
+    }
+    
 
  }
 

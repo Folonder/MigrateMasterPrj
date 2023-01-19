@@ -1,5 +1,9 @@
 # Сайт демо компании-помощника в миграции
 
+Пояснительная записка к курсовой:
+
+https://docs.google.com/document/d/1YBHwrhAdo4CvP8-JzrFXLJXt_WxbX4DIi49mX4apuOk/edit
+
 Сайт размещен по адресу:
 
 https://migratemaster.onrender.com/

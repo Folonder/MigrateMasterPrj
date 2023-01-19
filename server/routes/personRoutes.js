@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 router.get('/lol', (req, res) => {
+    console.log("lol request")
     res.send("lol");
 });
 router.post('/person', postPerson)

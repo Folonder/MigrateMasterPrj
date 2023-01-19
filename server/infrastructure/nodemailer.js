@@ -6,15 +6,15 @@ const transporter = nodemailer.createTransport(
         port: 465,
         secure: true,
         auth: {
-            user: 'migrate_master@mail.ru',
-            pass: '9x2GFJaCnZjBVxBKDzfB'
+            user: 'migratemaster@mail.ru',
+            pass: 'eSew3wDqFxbZU3g97y3v'
         },
         tls:{
             rejectUnauthorized:false
         }
     },
     {
-        from: 'Migrate Master <migrate_master@mail.ru>'
+        from: 'Migrate Master <migratemaster@mail.ru>'
     }
 )
 

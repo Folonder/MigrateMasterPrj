@@ -5,37 +5,38 @@ class PersonModel extends Model {}
 
 PersonModel.init({
     id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    mail: {
+    email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     phone: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     score: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: true
     },
     occupation: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     country: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     work_place: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     // create_date: {
     //     type: DataTypes.DATE,

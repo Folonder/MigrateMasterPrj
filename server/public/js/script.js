@@ -100,69 +100,90 @@ document.onscroll = function(){
 
  }
 
+ var form = document.getElementById('form-block');
+ form.onsubmit = function(event){
+         var xhr = new XMLHttpRequest();
+         var formData = new FormData(form);
+         //open the request
+         xhr.open('POST','http://localhost:3000/api/person')
+         xhr.setRequestHeader("Content-Type", "application/json");
+ 
+         //send the form data
+         xhr.send(JSON.stringify(Object.fromEntries(formData)));
+ 
+         xhr.onreadystatechange = function() {
+             if (xhr.readyState == XMLHttpRequest.DONE) {
+                 form.reset(); //reset form after AJAX success or do something else
+             }
+         }
+         //Fail the onsubmit to avoid page refresh.
+         return false; 
+     }
 
- document.addEventListener('DOMContentLoaded', function(){
-    const form = document.getElementById('form-block');
-    form.addEventListener('submit', formSend);
 
-    async function formSend(e){
-        e.preventDefault();        
-        let error = formValidate(form);
 
-        if (error === 0){
+//  document.addEventListener('DOMContentLoaded', function(){
+//     const form = document.getElementById('form-block');
+//     form.addEventListener('submit', formSend);
+
+//     async function formSend(e){
+//         e.preventDefault();        
+//         let error = formValidate(form);
+
+//         if (error === 0){
             
-            // SEND FORM TO EMAIL
-            console.log(error);
+//             // SEND FORM TO EMAIL
+//             console.log(error);
             
-            alert('Мы с вами свяжемся позже');
-            form.reset();
-        }else{
-            alert('Заполните обязательные поля');
-            console.log(error);
-        }
+//             alert('Мы с вами свяжемся позже');
+//             form.reset();
+//         }else{
+//             alert('Заполните обязательные поля');
+//             console.log(error);
+//         }
 
-    }
+//     }
 
-    function formValidate(form){
-        let error = 0;
-        let formRequest = document.querySelectorAll('._req');
+//     function formValidate(form){
+//         let error = 0;
+//         let formRequest = document.querySelectorAll('._req');
 
-        for (let index = 0 ;  index < formRequest.length; index++){
-            const input = formRequest[index];
-            formRemoveError(input);
+//         for (let index = 0 ;  index < formRequest.length; index++){
+//             const input = formRequest[index];
+//             formRemoveError(input);
             
-            if (input.classList.contains('_email')){                
-                if (emailValidator(input)){
-                    formAddError(input);
-                    error++;
-                }
-            }
-            else if (input.classList.contains('_name')){
-                if (input.value === ''){
-                    formAddError(input);
-                    error++;
-                }
-            }
+//             if (input.classList.contains('_email')){                
+//                 if (emailValidator(input)){
+//                     formAddError(input);
+//                     error++;
+//                 }
+//             }
+//             else if (input.classList.contains('_name')){
+//                 if (input.value === ''){
+//                     formAddError(input);
+//                     error++;
+//                 }
+//             }
             
-        }
-        return error;
-    }
+//         }
+//         return error;
+//     }
 
-    function formAddError(input){
-        input.parentElement.classList.add('_error');
-        input.classList.add('_error');    
-    }
+//     function formAddError(input){
+//         input.parentElement.classList.add('_error');
+//         input.classList.add('_error');    
+//     }
 
-    function formRemoveError(input){
-        input.parentElement.classList.remove('_error');
-        input.classList.remove('_error');    
-    }
+//     function formRemoveError(input){
+//         input.parentElement.classList.remove('_error');
+//         input.classList.remove('_error');    
+//     }
 
-    function emailValidator(input){
-        const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+//     function emailValidator(input){
+//         const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-        return !EMAIL_REGEXP.test(input.value);
+//         return !EMAIL_REGEXP.test(input.value);
         
-    }
+//     }
 
- });
+//  });

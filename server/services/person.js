@@ -3,6 +3,7 @@ const mailer = require('../infrastructure/nodemailer.js')
 
 function addPerson(personInfo){
     // score = calcScore(personInfo)
+    console.log(personInfo)
     savePerson(personInfo)
     mailPerson(personInfo)
 }
@@ -13,10 +14,9 @@ function calcScore(personInfo){
 }
 function mailPerson(personInfo){
     const message = {
-        to: personInfo.mail,
+        to: personInfo.email,
         subject: "Уведомление о регистрации",
         text: `Поздравляем, Вы успешно зарегистрировались на нашем сайте!
-            Ваш результат: ${personInfo.score}
 
             Данное письмо не требует ответа.`
     }

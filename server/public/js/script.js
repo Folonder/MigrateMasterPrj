@@ -64,12 +64,20 @@ function linkHandler(ev, name){
     document.querySelector(name).scrollIntoView({
         block: 'start',
         behavior: 'smooth'
-    })   
+    })  
+    if (name == 'main-page'){
+        window.scrollTo(0, 80);
+    } 
 }
+
 let head = document.querySelector('.js-header');
 let headH = document.querySelector('.js-header').clientHeight;
 let arrow = document.querySelector('.arrow');
+let wayToScroll = '.benefits-info';
 
+document.getElementById('_arrow').addEventListener('click', function(ev){
+    linkHandler(ev, wayToScroll);
+})
 
 document.onscroll = function(){
     if (window.innerWidth > 1240){
@@ -89,15 +97,23 @@ document.onscroll = function(){
     }
     
     // for apper/disapper arrow
-    let scroll = window.scrollY;    
-    if (scroll > headH){           
-       arrow.style.display = 'none';
-    }
-    else{           
-       arrow.style.display = 'block';
-    }
+    let widthArrow = window.getComputedStyle(document.getElementById('_arrow')).width; // width of arrow block
+    let scroll = window.scrollY;
+    let halfWidthArrow = (parseInt(widthArrow)/2);
     
-
+    if (scroll > headH + 1){           
+       arrow.style.left = '1rem';
+       document.getElementById('arrowId').src = "https://iconvulture.com/wp-content/uploads/2017/12/up-arrow.svg"; // arrow up
+       arrow.style.position = 'fixed';       
+       arrow.style.zIndex = 5;
+       wayToScroll = '.main-page';
+    }
+    else{                  
+       arrow.style.display = 'block';
+       arrow.style.left = `calc(50% - ${halfWidthArrow}px)`;
+       document.getElementById('arrowId').src = "https://iconvulture.com/wp-content/uploads/2017/12/angle-arrow-down.svg"; // arrow down
+       wayToScroll = '.benefits-info';
+    }    
  }
 
  var form = document.getElementById('form-block');
